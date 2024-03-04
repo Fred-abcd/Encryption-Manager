@@ -1,5 +1,6 @@
 package de.informatik;
 
+import de.informatik.encryptions.Encryption;
 import de.informatik.encryptions.EncryptionManager;
 import de.informatik.utils.Logger;
 
@@ -16,6 +17,11 @@ public class Main {
 
         Scanner inputMenu = new Scanner(System.in);
         logger.logInfo("Please choose one of the following: ");
+
+        for (Encryption e : manager.encryptions){
+            logger.logInfo(e.getName());
+        }
+
         manager.input(inputMenu.nextLine());
     }
 }
