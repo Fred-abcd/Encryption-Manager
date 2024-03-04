@@ -1,5 +1,8 @@
 package de.informatik.encryptions;
 
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
+
 public abstract class Encryption {
 
     public final String name;
@@ -16,7 +19,7 @@ public abstract class Encryption {
         this.key = key;
     }
 
-    abstract public void onExecute(String plaintext);
+    abstract public void onExecute(String plaintext) throws UnsupportedEncodingException, NoSuchAlgorithmException;
     abstract public void onLoad();
 
     public String getName() {

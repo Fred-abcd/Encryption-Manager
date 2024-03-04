@@ -1,10 +1,13 @@
 package de.informatik.encryptions;
 
 import de.informatik.Main;
+import de.informatik.encryptions.impl.Md5Encryption;
 import de.informatik.encryptions.impl.TestEncryption;
 import de.informatik.utils.InputHelper;
 import de.informatik.utils.Logger;
 
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +17,7 @@ public class EncryptionManager {
 
     public void init() {
         encryptions.add(new TestEncryption());
+        encryptions.add(new Md5Encryption());
 
         for (Encryption encryption : encryptions) {
             encryptionNames.add(encryption.getName());
@@ -21,7 +25,7 @@ public class EncryptionManager {
         }
     }
 
-    public void input(String input) {
+    public void input(String input) throws UnsupportedEncodingException, NoSuchAlgorithmException {
         String[] args = input.split("\\s+", 2);
 
         String methodName = args[0];
@@ -29,7 +33,6 @@ public class EncryptionManager {
 
         for (Encryption encryption : encryptions) {
             if (encryption.getName().equalsIgnoreCase(methodName)) {
-                System.out.println(methodArgs);
                 encryption.onExecute(methodArgs);
                 return;
             }

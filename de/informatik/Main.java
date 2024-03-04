@@ -4,6 +4,8 @@ import de.informatik.encryptions.Encryption;
 import de.informatik.encryptions.EncryptionManager;
 import de.informatik.utils.Logger;
 
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.util.Scanner;
 
 public class Main {
@@ -22,6 +24,12 @@ public class Main {
             logger.logInfo(e.getName());
         }
 
-        manager.input(inputMenu.nextLine());
+        try {
+            manager.input(inputMenu.nextLine());
+        } catch (UnsupportedEncodingException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchAlgorithmException e) {
+            logger.logError(e.getMessage());
+        }
     }
 }
