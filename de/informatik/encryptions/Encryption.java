@@ -17,6 +17,7 @@ public abstract class Encryption {
     }
 
     abstract public void onExecute(String plaintext);
+    abstract public void onLoad();
 
     public String getName() {
         return name;
