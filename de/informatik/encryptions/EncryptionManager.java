@@ -1,6 +1,7 @@
 package de.informatik.encryptions;
 
 import de.informatik.Main;
+import de.informatik.encryptions.impl.TestEncryption;
 import de.informatik.utils.InputHelper;
 import de.informatik.utils.Logger;
 
@@ -12,6 +13,7 @@ public class EncryptionManager {
     public List<String> encryptionNames = new ArrayList<>();
 
     public void init() {
+        encryptions.add(new TestEncryption());
 
         for (Encryption encryption : encryptions) {
             encryptionNames.add(encryption.getName());
@@ -20,11 +22,15 @@ public class EncryptionManager {
     }
 
     public void input(String input) {
-        String[] args = input.split("\\s+");
+        String[] args = input.split("\\s+", 2);
+
+        String methodName = args[0];
+        String methodArgs = args.length > 1 ? args[1] : "";
+
         for (Encryption encryption : encryptions) {
-            if (encryption.getName().equalsIgnoreCase(input)) {
-                //noch falsch
-                encryption.onExecute(args[1]);
+            if (encryption.getName().equalsIgnoreCase(methodName)) {
+                System.out.println(methodArgs);
+                encryption.onExecute(methodArgs);
                 return;
             }
         }
@@ -32,5 +38,6 @@ public class EncryptionManager {
         Main.logger.logError("Module " + input + " not found! Did you mean " + Logger.ANSI_YELLOW + mostSimilarString + Logger.ANSI_RED + "?");
         return;
     }
+
 
 }
