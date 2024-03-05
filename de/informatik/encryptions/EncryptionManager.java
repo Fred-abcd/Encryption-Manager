@@ -25,7 +25,7 @@ public class EncryptionManager {
         }
     }
 
-    public void input(String input) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+    public String input(String input) throws UnsupportedEncodingException, NoSuchAlgorithmException {
         String[] args = input.split("\\s+", 2);
 
         String methodName = args[0];
@@ -33,14 +33,12 @@ public class EncryptionManager {
 
         for (Encryption encryption : encryptions) {
             if (encryption.getName().equalsIgnoreCase(methodName)) {
-                encryption.onExecute(methodArgs);
-                return;
+                return encryption.onExecute(methodArgs);
+
             }
         }
         String mostSimilarString = InputHelper.findMostSimilarString(input, encryptionNames);
         Main.logger.logError("Module " + input + " not found! Did you mean " + Logger.ANSI_YELLOW + mostSimilarString + Logger.ANSI_RED + "?");
-        return;
+        return "ERROR";
     }
-
-
 }

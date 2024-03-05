@@ -5,10 +5,9 @@ import java.security.NoSuchAlgorithmException;
 
 public abstract class Encryption {
 
-    public final String name;
-    public String plaintext;
-    public String key;
-
+    private final String name;
+    private String plaintext;
+    private String key;
 
     public Encryption(String name) {
         this.name = name;
@@ -19,7 +18,7 @@ public abstract class Encryption {
         this.key = key;
     }
 
-    abstract public void onExecute(String plaintext) throws UnsupportedEncodingException, NoSuchAlgorithmException;
+    abstract public String onExecute(String plaintext) throws UnsupportedEncodingException, NoSuchAlgorithmException;
     abstract public void onLoad();
 
     public String getName() {

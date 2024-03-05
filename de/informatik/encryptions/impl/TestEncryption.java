@@ -9,8 +9,8 @@ public class TestEncryption extends Encryption {
     }
 
     @Override
-    public void onExecute(String plaintext) {
-
+    public String onExecute(String plaintext) {
+        return "test";
     }
 
     @Override
