@@ -88,7 +88,7 @@ public class Main extends JFrame {
         logTextArea.setText("");
         logger.logInfo("Available Encryptions:");
         for (String name : manager.encryptionNames) {
-            logTextArea.append(name + "\n");
+            logTextArea.append(name + " | usage: " + manager.findEncryptionByName(name).getUsage() + "\n");
         }
     }
 

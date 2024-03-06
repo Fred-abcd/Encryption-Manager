@@ -10,7 +10,7 @@ import java.security.NoSuchAlgorithmException;
 public class Md5Encryption extends Encryption {
 
     public Md5Encryption() {
-        super("md5");
+        super("md5", "md5 <text>");
     }
 
     @Override

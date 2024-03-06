@@ -2,7 +2,6 @@ package de.informatik.encryptions;
 
 import de.informatik.Main;
 import de.informatik.encryptions.impl.Md5Encryption;
-import de.informatik.encryptions.impl.TestEncryption;
 import de.informatik.utils.InputHelper;
 import de.informatik.utils.Logger;
 
@@ -16,7 +15,6 @@ public class EncryptionManager {
     public List<String> encryptionNames = new ArrayList<>();
 
     public void init() {
-        encryptions.add(new TestEncryption());
         encryptions.add(new Md5Encryption());
 
         for (Encryption encryption : encryptions) {
@@ -34,11 +32,19 @@ public class EncryptionManager {
         for (Encryption encryption : encryptions) {
             if (encryption.getName().equalsIgnoreCase(methodName)) {
                 return encryption.onExecute(methodArgs);
-
             }
         }
         String mostSimilarString = InputHelper.findMostSimilarString(input, encryptionNames);
         Main.logger.logError("Module " + input + " not found! Did you mean " + Logger.ANSI_YELLOW + mostSimilarString + Logger.ANSI_RED + "?");
         return "ERROR";
+    }
+
+    public Encryption findEncryptionByName(String name) {
+        for (Encryption e : encryptions) {
+            if (e.getName().equalsIgnoreCase(name)) {
+                return e;
+            }
+        }
+        return null;
     }
 }
