@@ -33,6 +33,7 @@ public class SHA256Encrypt extends Encryption {
 
     @Override
     public void onLoad() {
+        Main.logger.logInfo("Loading SHA-256 encryption...");
 
     }
 }

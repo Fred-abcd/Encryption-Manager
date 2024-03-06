@@ -34,6 +34,7 @@ public class SHA224Encrypt extends Encryption {
 
     @Override
     public void onLoad() {
+        Main.logger.logInfo("Loading SHA-224 encryption...");
 
     }
 }

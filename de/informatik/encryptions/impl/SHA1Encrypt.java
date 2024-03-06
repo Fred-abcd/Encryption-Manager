@@ -34,6 +34,6 @@ public class SHA1Encrypt extends Encryption {
 
     @Override
     public void onLoad() {
-
+        Main.logger.logInfo("Loading SHA-1 encryption...");
     }
 }

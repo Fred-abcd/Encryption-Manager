@@ -34,6 +34,7 @@ public class SHA512Encrypt extends Encryption {
 
     @Override
     public void onLoad() {
+        Main.logger.logInfo("Loading SHA-512 encryption...");
 
     }
 }

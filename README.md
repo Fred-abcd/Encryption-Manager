@@ -29,6 +29,15 @@ To run this application, ensure you have Java installed on your system. Then, fo
 javac *.java
 java Main
 ```
+
+
+OR
+
+Download [this](https://github.com/Fred-abcd/Encryption-Manager/releases/download/basic/ww.jar) file
+
+```bash
+java -jar ww.jar
+```
     
 
 ## Dependencies

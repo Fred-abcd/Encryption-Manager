@@ -31,6 +31,7 @@ public class Md5Encryption extends Encryption {
 
     @Override
     public void onLoad() {
-        Main.logger.logInfo("Loading Md5...");
+        Main.logger.logInfo("Loading MD5 encryption...");
+
     }
 }

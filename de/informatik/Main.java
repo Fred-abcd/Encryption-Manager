@@ -26,12 +26,13 @@ public class Main extends JFrame {
     public Main() {
         setTitle("Encryption Manager");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setResizable(false);
         setSize(800, 600);
         setLayout(new BorderLayout());
         getContentPane().setBackground(new Color(50, 50, 50));
         logTextArea = new JTextArea();
         logTextArea.setEditable(false);
-        logTextArea.setFont(new Font("Arial", Font.PLAIN, 18));
+        logTextArea.setFont(new Font("Roboto", Font.PLAIN, 25));
         logTextArea.setBackground(new Color(30, 30, 30));
         logTextArea.setForeground(Color.WHITE);
         JScrollPane scrollPane = new JScrollPane(logTextArea);
@@ -88,6 +89,7 @@ public class Main extends JFrame {
         logTextArea.setText("");
         logger.logInfo("Available Encryptions:");
         for (String name : manager.encryptionNames) {
+            logger.logInfo(name);
             logTextArea.append(name + " | usage: " + manager.findEncryptionByName(name).getUsage() + "\n");
         }
     }
@@ -196,7 +198,7 @@ public class Main extends JFrame {
                     UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
                     break;
             }
-            setUIFont(new Font("Arial", Font.PLAIN, 18));
+            setUIFont(new Font("Arial", Font.PLAIN, 25));
             SwingUtilities.updateComponentTreeUI(this);
         } catch (Exception e) {
             logger.logError("Error setting look and feel: " + e.getMessage());

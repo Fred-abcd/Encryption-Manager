@@ -34,6 +34,7 @@ public class SHA384Encrypt extends Encryption {
 
     @Override
     public void onLoad() {
+        Main.logger.logInfo("Loading SHA-384 encryption...");
 
     }
 }
