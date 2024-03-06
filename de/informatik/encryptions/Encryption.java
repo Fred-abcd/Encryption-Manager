@@ -15,12 +15,6 @@ public abstract class Encryption {
         this.usage = usage;
     }
 
-    public Encryption(String name, String key, String usage) {
-        this.name = name;
-        this.key = key;
-        this.usage = usage;
-    }
-
     abstract public String onExecute(String plaintext) throws UnsupportedEncodingException, NoSuchAlgorithmException;
     abstract public void onLoad();
 

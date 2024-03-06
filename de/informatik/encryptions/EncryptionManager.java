@@ -1,7 +1,7 @@
 package de.informatik.encryptions;
 
 import de.informatik.Main;
-import de.informatik.encryptions.impl.Md5Encryption;
+import de.informatik.encryptions.impl.*;
 import de.informatik.utils.InputHelper;
 import de.informatik.utils.Logger;
 
@@ -16,6 +16,12 @@ public class EncryptionManager {
 
     public void init() {
         encryptions.add(new Md5Encryption());
+        encryptions.add(new SHA1Encrypt());
+        encryptions.add(new SHA224Encrypt());
+        encryptions.add(new SHA256Encrypt());
+        encryptions.add(new SHA384Encrypt());
+        encryptions.add(new SHA512Encrypt());
+
 
         for (Encryption encryption : encryptions) {
             encryptionNames.add(encryption.getName());
