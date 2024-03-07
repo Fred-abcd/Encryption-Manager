@@ -11,9 +11,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EncryptionManager {
+    //Liste der Encryptions als Klassen
     public ArrayList<Encryption> encryptions = new ArrayList<>();
+
+    //Liste der Namen der Encryptions
     public List<String> encryptionNames = new ArrayList<>();
 
+    //initialisierung
     public void init() {
         encryptions.add(new Md5Encryption());
         encryptions.add(new SHA1Encrypt());
@@ -29,6 +33,7 @@ public class EncryptionManager {
         }
     }
 
+    //Verwaltung des Inputs, teilung auf Name und Text
     public String input(String input) throws UnsupportedEncodingException, NoSuchAlgorithmException {
         String[] args = input.split("\\s+", 2);
 
@@ -45,6 +50,7 @@ public class EncryptionManager {
         return "ERROR";
     }
 
+    //Name einer Encryption einer Klasse (Encryption) zuordnen
     public Encryption findEncryptionByName(String name) {
         for (Encryption e : encryptions) {
             if (e.getName().equalsIgnoreCase(name)) {
