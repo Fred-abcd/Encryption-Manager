@@ -18,18 +18,26 @@ import java.util.Enumeration;
 
 public class Main extends JFrame {
 
+    //Deklarierung erster Klassenvariablen
     public static Logger logger = new Logger();
     private EncryptionManager manager = new EncryptionManager();
     private JTextArea logTextArea;
     private boolean encryptionsLoaded = false;
 
+    //Erstellung eines Main-Konstruktors
     public Main() {
+        /*
+        Einstellung des Fenstertitels, der Schließaktion,
+        der Größe, des Layouts und der Hintergrundfarbe des Inhaltsbereichs.
+         */
         setTitle("Encryption Manager");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
         setSize(800, 600);
         setLayout(new BorderLayout());
         getContentPane().setBackground(new Color(50, 50, 50));
+
+        //Konfiguration der JTextArea für die Auflistung der Encryptions.
         logTextArea = new JTextArea();
         logTextArea.setEditable(false);
         logTextArea.setFont(new Font("Roboto", Font.PLAIN, 25));
@@ -39,6 +47,7 @@ public class Main extends JFrame {
         scrollPane.setBorder(null);
         add(scrollPane, BorderLayout.CENTER);
 
+        //Erstellung der restlichen wichtigen Dinge wie z.b. Buttons
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         buttonPanel.setBackground(new Color(50, 50, 50));
 
@@ -72,6 +81,7 @@ public class Main extends JFrame {
         setVisible(true);
     }
 
+    //erstellung eines JButtons
     private JButton createButton(String text) {
         JButton button = new JButton(text);
         button.setBackground(new Color(70, 70, 70));
@@ -80,6 +90,7 @@ public class Main extends JFrame {
         return button;
     }
 
+    //Laden aller Encryptions
     private void loadEncryptions() {
         logger.logInfo("Loading all Encryptions...");
         manager.init();
@@ -94,6 +105,7 @@ public class Main extends JFrame {
         }
     }
 
+    //Auswahl der Encryptions
     private void chooseEncryption() {
         if (!encryptionsLoaded) {
             logger.logError("Please load encryptions first.");
@@ -113,6 +125,7 @@ public class Main extends JFrame {
         }
     }
 
+    //Erstellung der Themes
     private void createThemesMenu() {
         JMenuBar menuBar = new JMenuBar();
         JMenu themesMenu = new JMenu("Themes");
@@ -169,6 +182,7 @@ public class Main extends JFrame {
         setJMenuBar(menuBar);
     }
 
+    //Erstellung eines Menüpunktes
     private JMenuItem createMenuItem(String text) {
         JMenuItem menuItem = new JMenuItem(text);
         menuItem.setBackground(new Color(220, 220, 220));
@@ -176,6 +190,7 @@ public class Main extends JFrame {
         return menuItem;
     }
 
+    //Look and Feel
     private void setLookAndFeel(String theme) {
         try {
             switch (theme) {
@@ -205,6 +220,7 @@ public class Main extends JFrame {
         }
     }
 
+    //uiFont einstellung
     private void setUIFont(Font f) {
         Enumeration<Object> keys = UIManager.getDefaults().keys();
         while (keys.hasMoreElements()) {
@@ -216,11 +232,13 @@ public class Main extends JFrame {
         }
     }
 
+    //Kopiert einen Text in die Zwischenablage
     private void copyToClipboard(String text) {
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(new StringSelection(text), null);
         logger.logSuccess("Result copied to clipboard: " + text);
     }
 
+    //starten des Programms
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
